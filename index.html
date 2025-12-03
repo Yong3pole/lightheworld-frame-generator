@@ -150,16 +150,6 @@
             padding-left: 38px;
         }
         
-        .app-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #f6c84c;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-        }
-        
         @media (max-width: 480px) {
             .modal-content {
                 padding: 20px;
@@ -213,8 +203,6 @@
                 </div>
                 <p class="step-description">Use the copied link to proceed to the frame generator.</p>
             </div>
-            
-            <!--<a href="app.html" class="app-link" id="directLink">Already in Chrome/Safari? Click here to go directly to the app →</a> -->
         </div>
     </div>
 
@@ -224,7 +212,6 @@
     
     // Set the link in the box
     document.getElementById('linkBox').textContent = appUrl;
-    document.getElementById('directLink').href = appUrl;
     
     // Copy button
     const copyBtn = document.getElementById('copyBtn');
