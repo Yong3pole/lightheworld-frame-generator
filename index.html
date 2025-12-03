@@ -8,10 +8,10 @@
     <!-- Facebook OG Tags -->
     <meta property="og:title" content="Light the World Davao 2025 Frame Generator">
     <meta property="og:description" content="Create your Light the World framed photo. Get the link to use in Chrome or Safari!">
-    <meta property="og:image" content="assets/og-preview.jpg">
+    <meta property="og:image" content="https://yong3pole.github.io/lightheworld-frame-generator/assets/og-preview.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://YOUR-USERNAME.github.io/REPO-NAME/">
+    <meta property="og:url" content="https://yong3pole.github.io/lightheworld-frame-generator/">
     <meta property="og:type" content="website">
     
     <style>
@@ -57,12 +57,13 @@
             background: white;
             border-radius: 20px;
             padding: 30px;
-            max-width: 500px;
+            max-width: 450px;
             width: 100%;
             color: #333;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             position: relative;
             animation: slideUp 0.5s;
+            text-align: center;
         }
         
         @keyframes slideUp {
@@ -76,100 +77,83 @@
             font-size: 3rem;
             display: block;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         h1 {
             color: #f6c84c;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         
         .subtitle {
             text-align: center;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-size: 1rem;
-        }
-        
-        .steps {
-            margin: 25px 0;
+            line-height: 1.4;
         }
         
         .step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .step:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+            text-align: left;
+            margin-bottom: 25px;
         }
         
         .step-number {
+            display: inline-block;
             background: #f6c84c;
             color: #1a237e;
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
+            line-height: 28px;
             font-weight: bold;
-            margin-right: 15px;
-            flex-shrink: 0;
+            margin-right: 10px;
+            font-size: 0.9rem;
         }
         
-        .step-content h3 {
-            margin: 0 0 8px 0;
+        .step-title {
+            display: inline;
             font-size: 1.1rem;
             color: #333;
-        }
-        
-        .step-content p {
-            margin: 0;
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-weight: 600;
         }
         
         .link-container {
             background: #f8f9fa;
             border-radius: 12px;
             padding: 15px;
-            margin: 20px 0;
+            margin: 15px 0;
             border: 2px dashed #e0e0e0;
         }
         
         .link-box {
             font-family: monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             word-break: break-all;
             color: #333;
             padding: 10px;
             background: white;
             border-radius: 8px;
             border: 1px solid #ddd;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            text-align: center;
         }
         
         .buttons {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         .btn {
             flex: 1;
-            padding: 16px;
+            padding: 14px;
             border: none;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -205,20 +189,21 @@
             background: #fff3cd;
             border: 1px solid #ffeaa7;
             color: #856404;
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
-            margin-top: 20px;
-            font-size: 0.9rem;
+            margin-top: 15px;
+            font-size: 0.85rem;
             text-align: center;
+            line-height: 1.4;
         }
         
         .app-link {
             display: block;
             text-align: center;
-            margin-top: 25px;
+            margin-top: 20px;
             color: #f6c84c;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-decoration: none;
         }
         
@@ -226,9 +211,18 @@
             text-decoration: underline;
         }
         
+        .step-description {
+            margin-top: 8px;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            padding-left: 38px;
+        }
+        
         @media (max-width: 480px) {
             .modal-content {
                 padding: 20px;
+                max-width: 90%;
             }
             
             .buttons {
@@ -236,7 +230,21 @@
             }
             
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+            }
+            
+            .step-title {
+                font-size: 1rem;
+            }
+            
+            .link-box {
+                font-size: 0.8rem;
+                padding: 8px;
+            }
+            
+            .btn {
+                padding: 12px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -246,49 +254,31 @@
     <div class="modal-overlay">
         <div class="modal-content">
             <h1>Light The World Davao 2025 Frame</h1>
-            <p class="subtitle">Follow these steps to create your framed photo:</p>
+            <p class="subtitle">Follow the steps to use the frame:</p>
             
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Copy the link below</h3>
-                        <p>Facebook's browser blocks downloads. Copy this link to use in Chrome or Safari.</p>
-                    </div>
+            <div class="step">
+                <div>
+                    <span class="step-number">1</span>
+                    <span class="step-title">Copy the link below</span>
                 </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Open in Chrome or Safari</h3>
-                        <p>Paste the link in Chrome or Safari's address bar and press Enter.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Choose & customize your photo</h3>
-                        <p>Upload your photo, position it, and adjust zoom in the frame generator.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Download & share</h3>
-                        <p>Save your framed photo and copy the caption to share on social media.</p>
-                    </div>
-                </div>
+                <p class="step-description">Facebook's browser blocks downloads. Copy this link to use in Chrome or Safari.</p>
             </div>
             
             <div class="link-container">
-                <div class="link-box" id="linkBox">https://YOUR-USERNAME.github.io/REPO-NAME/app.html</div>
+                <div class="link-box" id="linkBox">https://yong3pole.github.io/lightheworld-frame-generator/app.html</div>
                 
                 <div class="buttons">
                     <button class="btn btn-secondary" id="copyBtn">📋 Copy Link</button>
                     <button class="btn btn-primary" id="openBtn">🚀 Open in Browser</button>
                 </div>
+            </div>
+            
+            <div class="step">
+                <div>
+                    <span class="step-number">2</span>
+                    <span class="step-title">Open your browser like Google Chrome or Safari</span>
+                </div>
+                <p class="step-description">Use the copied link to proceed to the frame generator.</p>
             </div>
             
             <div class="warning">
