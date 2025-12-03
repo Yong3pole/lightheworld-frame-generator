@@ -45,12 +45,6 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            animation: fadeIn 0.5s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
         
         .modal-content {
@@ -62,29 +56,14 @@
             color: #333;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             position: relative;
-            animation: slideUp 0.5s;
             text-align: center;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        /* Remove close button - make it non-closable */
-        .modal-content::before {
-            content: "⚠️";
-            font-size: 3rem;
-            display: block;
-            text-align: center;
-            margin-bottom: 15px;
         }
         
         h1 {
             color: #f6c84c;
             font-size: 1.6rem;
             text-align: center;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
         }
         
         .subtitle {
@@ -97,7 +76,7 @@
         
         .step {
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .step-number {
@@ -125,7 +104,7 @@
             background: #f8f9fa;
             border-radius: 12px;
             padding: 15px;
-            margin: 15px 0;
+            margin: 15px 0 25px 0;
             border: 2px dashed #e0e0e0;
         }
         
@@ -134,67 +113,41 @@
             font-size: 0.85rem;
             word-break: break-all;
             color: #333;
-            padding: 10px;
+            padding: 12px;
             background: white;
             border-radius: 8px;
             border: 1px solid #ddd;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-align: center;
         }
         
-        .buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .btn {
-            flex: 1;
+        .copy-btn {
+            width: 100%;
             padding: 14px;
+            background: #4CAF50;
+            color: white;
             border: none;
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            text-align: center;
-            text-decoration: none;
         }
         
-        .btn-primary {
-            background: #f6c84c;
-            color: #1a237e;
-        }
-        
-        .btn-primary:hover {
-            background: #ffd95c;
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background: #4CAF50;
-            color: white;
-        }
-        
-        .btn-secondary:hover {
+        .copy-btn:hover {
             background: #5CBF60;
-            transform: translateY(-2px);
         }
         
-        .btn-copied {
-            background: #2E7D32 !important;
+        .copy-btn.copied {
+            background: #2E7D32;
         }
         
-        .warning {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 0.85rem;
-            text-align: center;
+        .step-description {
+            margin-top: 8px;
+            color: #666;
+            font-size: 0.9rem;
             line-height: 1.4;
+            padding-left: 38px;
         }
         
         .app-link {
@@ -207,26 +160,10 @@
             text-decoration: none;
         }
         
-        .app-link:hover {
-            text-decoration: underline;
-        }
-        
-        .step-description {
-            margin-top: 8px;
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            padding-left: 38px;
-        }
-        
         @media (max-width: 480px) {
             .modal-content {
                 padding: 20px;
                 max-width: 90%;
-            }
-            
-            .buttons {
-                flex-direction: column;
             }
             
             h1 {
@@ -239,12 +176,12 @@
             
             .link-box {
                 font-size: 0.8rem;
-                padding: 8px;
+                padding: 10px;
             }
             
-            .btn {
+            .copy-btn {
                 padding: 12px;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -261,16 +198,12 @@
                     <span class="step-number">1</span>
                     <span class="step-title">Copy the link below</span>
                 </div>
-                <p class="step-description">Facebook's browser blocks downloads. Copy this link to use in Chrome or Safari.</p>
             </div>
             
             <div class="link-container">
                 <div class="link-box" id="linkBox">https://yong3pole.github.io/lightheworld-frame-generator/app.html</div>
                 
-                <div class="buttons">
-                    <button class="btn btn-secondary" id="copyBtn">📋 Copy Link</button>
-                    <button class="btn btn-primary" id="openBtn">🚀 Open in Browser</button>
-                </div>
+                <button class="copy-btn" id="copyBtn">📋 Copy Link</button>
             </div>
             
             <div class="step">
@@ -279,11 +212,6 @@
                     <span class="step-title">Open your browser like Google Chrome or Safari</span>
                 </div>
                 <p class="step-description">Use the copied link to proceed to the frame generator.</p>
-            </div>
-            
-            <div class="warning">
-                ⚠️ <strong>Important:</strong> The download won't work in Facebook's browser. 
-                You must use Chrome or Safari.
             </div>
             
             <a href="app.html" class="app-link" id="directLink">Already in Chrome/Safari? Click here to go directly to the app →</a>
@@ -308,11 +236,11 @@
                 // Visual feedback
                 const originalText = this.textContent;
                 this.textContent = '✓ Copied!';
-                this.classList.add('btn-copied');
+                this.classList.add('copied');
                 
                 setTimeout(() => {
                     this.textContent = originalText;
-                    this.classList.remove('btn-copied');
+                    this.classList.remove('copied');
                 }, 2000);
                 
             } catch (err) {
@@ -333,31 +261,6 @@
                 document.body.removeChild(textarea);
             }
         });
-        
-        // Open in browser button
-        document.getElementById('openBtn').addEventListener('click', function() {
-            // Try to open in a new tab or window
-            window.open(appUrl, '_blank');
-            
-            // Show message
-            this.textContent = 'Opening...';
-            setTimeout(() => {
-                this.textContent = '🚀 Open in Browser';
-            }, 1500);
-        });
-        
-        // Check if already in a good browser (optional)
-        function isGoodBrowser() {
-            const ua = navigator.userAgent.toLowerCase();
-            const isFacebook = ua.includes('fban') || ua.includes('fb_iab') || ua.includes('messenger');
-            return !isFacebook;
-        }
-        
-        // If already in a good browser, update message
-        if (isGoodBrowser()) {
-            document.querySelector('.subtitle').textContent = "You're in a compatible browser! Ready to create your framed photo.";
-            document.querySelector('.warning').style.display = 'none';
-        }
     </script>
 </body>
 </html>
