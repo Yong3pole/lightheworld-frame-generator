@@ -219,48 +219,54 @@
     </div>
 
     <script>
-        // Get the current URL and construct the app URL
-        const currentUrl = window.location.href;
-        const baseUrl = currentUrl.replace('/index.html', '').replace(/\/$/, '');
-        const appUrl = baseUrl + '/app.html';
-        
-        // Update all link elements
-        document.getElementById('linkBox').textContent = appUrl;
-        document.getElementById('directLink').href = appUrl;
-        
-        // Copy button functionality
-        document.getElementById('copyBtn').addEventListener('click', async function() {
-            try {
-                await navigator.clipboard.writeText(appUrl);
-                
-                // Visual feedback
-                const originalText = this.textContent;
-                this.textContent = '✓ Copied!';
-                this.classList.add('copied');
-                
-                setTimeout(() => {
-                    this.textContent = originalText;
-                    this.classList.remove('copied');
-                }, 2000);
-                
-            } catch (err) {
-                // Fallback for older browsers
-                const textarea = document.createElement('textarea');
-                textarea.value = appUrl;
-                document.body.appendChild(textarea);
-                textarea.select();
-                try {
-                    document.execCommand('copy');
-                    this.textContent = '✓ Copied!';
+    // Fixed GitHub Pages URL
+    const appUrl = 'https://yong3pole.github.io/lightheworld-frame-generator/app.html';
+    
+    // Set the link in the box
+    document.getElementById('linkBox').textContent = appUrl;
+    document.getElementById('directLink').href = appUrl;
+    
+    // Copy button
+    const copyBtn = document.getElementById('copyBtn');
+    copyBtn.addEventListener('click', function() {
+        // Try modern clipboard API
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(appUrl)
+                .then(() => {
+                    copyBtn.textContent = '✓ Copied!';
+                    copyBtn.classList.add('copied');
                     setTimeout(() => {
-                        this.textContent = '📋 Copy Link';
+                        copyBtn.textContent = '📋 Copy Link';
+                        copyBtn.classList.remove('copied');
                     }, 2000);
-                } catch (e) {
-                    alert('Please copy the link manually: ' + appUrl);
-                }
-                document.body.removeChild(textarea);
-            }
-        });
-    </script>
+                })
+                .catch(() => {
+                    // Fallback
+                    copyFallback();
+                });
+        } else {
+            copyFallback();
+        }
+    });
+    
+    function copyFallback() {
+        const textarea = document.createElement('textarea');
+        textarea.value = appUrl;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            copyBtn.textContent = '✓ Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtn.textContent = '📋 Copy Link';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            alert('Please copy the link manually:\n\n' + appUrl);
+        }
+        document.body.removeChild(textarea);
+    }
+</script>
 </body>
 </html>
