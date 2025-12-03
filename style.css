@@ -1,0 +1,128 @@
+:root {
+    --bg: #faf8f6;
+    --accent: #f6c84c;
+    --muted: #666;
+    --max-width: 900px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    margin: 0;
+    background: var(--bg);
+    color: #111;
+    overflow-y: auto; /* Allow vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 28px auto;
+    padding: 20px;
+    min-height: 100vh; /* Ensure content is tall enough */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.35rem
+}
+
+.lead {
+    margin: 6px 0 18px;
+    color: var(--muted)
+}
+
+.uploader {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px
+}
+
+.btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.btn.primary {
+    background: var(--accent);
+    border-color: rgba(0, 0, 0, 0.08)
+}
+
+.canvas-wrap {
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06)
+}
+
+.canvas-stage {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: #eee;
+    display: block;
+    touch-action: none; /* Prevent browser gestures only on canvas */
+}
+
+.frame-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url('assets/frame.png');
+    background-size: cover;
+    background-position: center;
+    touch-action: none; /* Prevent browser gestures on frame overlay */
+}
+
+.hint {
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 8px
+}
+
+.caption {
+    margin-top: 18px
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem
+}
+
+.caption-actions {
+    margin-top: 8px
+}
+
+footer {
+    margin-top: 18px;
+    color: var(--muted);
+    text-align: center
+}
+
+@media (max-width:640px) {
+    .container {
+        padding: 12px
+    }
+
+    .canvas-stage {
+        max-width: 100%
+    }
+}

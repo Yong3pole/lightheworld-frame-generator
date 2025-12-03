@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="canvas" width="1200" height="630"></canvas>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Background
+ctx.fillStyle = '#faf8f6'; // Your site background color
+ctx.fillRect(0, 0, 1200, 630);
+
+// Add a subtle gradient
+const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+gradient.addColorStop(0, '#f6c84c'); // Your accent color
+gradient.addColorStop(1, '#ffeb3b');
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, 1200, 200);
+
+// Title
+ctx.fillStyle = '#fff';
+ctx.font = 'bold 70px Arial';
+ctx.textAlign = 'center';
+ctx.fillText('Light the World', 600, 120);
+
+// Subtitle
+ctx.font = 'bold 45px Arial';
+ctx.fillText('Davao 2025 Frame Generator', 600, 180);
+
+// Steps
+ctx.fillStyle = '#333';
+ctx.font = 'bold 35px Arial';
+ctx.fillText('Upload • Position • Download • Share', 600, 280);
+
+// Mock frame example
+ctx.strokeStyle = '#f6c84c';
+ctx.lineWidth = 8;
+ctx.strokeRect(400, 350, 400, 400);
+
+// Add text inside frame
+ctx.fillStyle = '#666';
+ctx.font = '30px Arial';
+ctx.fillText('Your Photo Here', 600, 420);
+ctx.font = '25px Arial';
+ctx.fillText('+ Light the World Frame', 600, 470);
+
+// Candle icon
+ctx.fillStyle = '#f6c84c';
+ctx.fillRect(590, 520, 20, 60);
+ctx.beginPath();
+ctx.arc(600, 510, 15, 0, Math.PI * 2);
+ctx.fill();
+
+// Download
+const link = document.createElement('a');
+link.download = 'og-preview.jpg';
+link.href = canvas.toDataURL('image/jpeg', 0.9);
+link.click();
+
+alert('og-preview.jpg downloaded! Place it in your assets folder.');
+</script>
+</body>
+</html>

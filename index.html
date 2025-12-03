@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1">
+    <title>Light the World Davao 2025 Frame Generator</title>
+    
+    <!-- Essential OG Tags for Facebook -->
+    <meta property="og:title" content="Light the World Davao 2025 Frame Generator">
+    <meta property="og:description" content="Create your Light the World framed photo. Upload, position, download, and share with our special Davao 2025 frame!">
+    <meta property="og:image" content="https://lighttheworld-davao2025-v2.netlify.app/assets/og-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://lighttheworld-davao2025-v2.netlify.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Light the World Davao">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Light the World Davao 2025 Frame Generator">
+    <meta name="twitter:description" content="Create your Light the World framed photo">
+    <meta name="twitter:image" content="https://lighttheworld-davao2025-v2.netlify.app/assets/og-preview.jpg">
+    
+    <!-- SEO Description -->
+    <meta name="description" content="Create your Light the World framed photo. Upload, position, download, and share with our special Davao 2025 frame!">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* Facebook Browser Modal */
+        .fb-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s;
+        }
+        
+        .fb-modal-overlay.show {
+            display: flex;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fb-modal-box {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .fb-modal-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .fb-modal-box h2 {
+            margin: 0 0 16px 0;
+            font-size: 1.3rem;
+            text-align: center;
+            color: #333;
+        }
+        
+        .fb-modal-box p {
+            margin: 12px 0;
+            line-height: 1.6;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .fb-modal-box strong {
+            color: #f6c84c;
+            font-weight: 600;
+        }
+        
+        .fb-link-box {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 16px 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #333;
+            word-break: break-all;
+            border: 2px dashed #ddd;
+        }
+        
+        .fb-modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .fb-btn {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .fb-btn-copy {
+            background: #f6c84c;
+            color: #333;
+        }
+        
+        .fb-btn-copy:active {
+            transform: scale(0.95);
+        }
+        
+        .fb-btn-continue {
+            background: #e0e0e0;
+            color: #666;
+        }
+        
+        .fb-modal-note {
+            font-size: 0.85rem;
+            color: #999;
+            text-align: center;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Facebook Browser Warning Modal -->
+    <div class="fb-modal-overlay" id="fbModal">
+        <div class="fb-modal-box">
+            <div class="fb-modal-icon">⚠️</div>
+            <h2>Downloads Don't Work Here</h2>
+            <p>You're using Facebook's browser. To download your framed photo, you need to open this in <strong>Chrome or Safari</strong>.</p>
+            
+            <p style="font-weight: 600; margin-top: 16px;">Copy this link:</p>
+            <div class="fb-link-box" id="linkText">lighttheworld-davao2025-v2.netlify.app</div>
+            
+            <p style="font-size: 0.9rem;">Then paste it in Chrome or Safari's address bar.</p>
+            
+            <div class="fb-modal-buttons">
+                <button class="fb-btn fb-btn-copy" id="copyLinkBtn">Copy Link</button>
+                <button class="fb-btn fb-btn-continue" id="continueBtn">Continue Anyway</button>
+            </div>
+            
+            <div class="fb-modal-note">Download won't work if you continue here</div>
+        </div>
+    </div>
+
+    <main class="container">
+        <header>
+            <h1>Light the World Davao 2025 Frame</h1>
+            <p class="lead">Upload a photo, position it, then download your framed image and copy the provided caption below.</p>
+        </header>
+
+        <section class="uploader">
+            <label class="btn" for="fileInput">Choose Photo</label>
+            <input id="fileInput" type="file" accept="image/*" hidden />
+            <button id="downloadBtn" class="btn primary" disabled>Download</button>
+            <button id="resetBtn" class="btn" title="Reset position">Reset</button>
+        </section>
+
+        <section class="canvas-wrap">
+            <div class="canvas-stage">
+                <canvas id="editor" width="1080" height="1080" aria-label="Photo editor"></canvas>
+                <div class="frame-overlay" aria-hidden="true"></div>
+            </div>
+            <p class="hint">Use mouse wheel to zoom, drag to pan. On touch: pinch to zoom and drag to pan.</p>
+        </section>
+
+        <section class="caption">
+            <h2>Caption</h2>
+            <textarea id="captionText" rows="6">This Christmas, let's Light the World by giving our light and love as He did. Through small acts of kindness we can change lives — one person, one family, one community at a time. 🎄♥️✨
+
+Join us by adding the Facebook frame: https://lighttheworld-davao2025-v2.netlify.app/
+Like and follow: https://www.facebook.com/people/Light-The-World-Giving-Machine-Davao/61567474256011/
+
+#LightTheWorld2025 #LightTheWorldDavao</textarea>
+            <div class="caption-actions">
+                <button id="copyCaption" class="btn">Copy caption</button>
+                <small class="caption-note"></small>
+            </div>
+        </section>
+
+        <footer>
+            <small>Light the World Davao — 2025</small>
+        </footer>
+    </main>
+
+    <script>
+        // Detect Facebook browser and show modal IMMEDIATELY
+        function isFacebookBrowser() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) || (ua.indexOf("Instagram") > -1);
+        }
+        
+        if (isFacebookBrowser()) {
+            document.getElementById('fbModal').classList.add('show');
+        }
+        
+        // Copy link button
+        document.getElementById('copyLinkBtn').addEventListener('click', function() {
+            const link = 'lighttheworld-davao2025-v2.netlify.app';
+            
+            // Try modern clipboard API first
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(link).then(() => {
+                    this.textContent = 'Copied! ✓';
+                    setTimeout(() => {
+                        this.textContent = 'Copy Link';
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback
+                    fallbackCopy(link, this);
+                });
+            } else {
+                fallbackCopy(link, this);
+            }
+        });
+        
+        function fallbackCopy(text, button) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                button.textContent = 'Copied! ✓';
+                setTimeout(() => {
+                    button.textContent = 'Copy Link';
+                }, 2000);
+            } catch (err) {
+                button.textContent = 'Copy manually';
+            }
+            document.body.removeChild(textarea);
+        }
+        
+        // Continue anyway button
+        document.getElementById('continueBtn').addEventListener('click', function() {
+            document.getElementById('fbModal').classList.remove('show');
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
